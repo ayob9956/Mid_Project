@@ -1,9 +1,8 @@
 package com.example.mid_project.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,4 +17,21 @@ public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotEmpty(message = "provider name must not be empty")
+    @Column(columnDefinition = "varchar(30) not null")
+    private String providerName;
+
+    @NotEmpty(message = "details must not be empty")
+    @Column(columnDefinition = "varchar(150) not null")
+    private String details;
+
+    @NotNull(message = "budget must not be null")
+    @Column(columnDefinition = "integer not null")
+    private Integer budget;
+
+    @NotEmpty(message = "duration must not be empty")
+    @Column(columnDefinition = "varchar(15) not null")
+    private String duration;
+
 }
