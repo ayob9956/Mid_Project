@@ -56,4 +56,13 @@ public class ProjectService {
         return projectRepo.findProjectById(id);
     }
 
+    public List<Project> getProjectsByType(String type) {
+        List<Project> projects = projectRepo.findProjectByType(type);
+        if (projects.isEmpty()) {
+            throw new ApiException("sorry! there's no projects with this type");
+        }
+        return projects;
+
+    }
+
 }

@@ -50,6 +50,11 @@ public class ClientController {
         return clientService.getClientById(id);
     }
 
+    @GetMapping("/search/provider/{name}")
+    public ResponseEntity searchForProviderByName(@PathVariable String name) {
+        return ResponseEntity.status(200).body(clientService.getProviderByName(name));
+    }
+
 
     @PostMapping("/add/project/{clientID}")
     public ResponseEntity addNewProject(@PathVariable Integer clientID, @RequestBody Project project) {
@@ -67,5 +72,6 @@ public class ClientController {
         clientService.acceptRequest(id);
         return ResponseEntity.status(200).body(new ApiResponse("request accepted Successfully"));
     }
+
 
 }

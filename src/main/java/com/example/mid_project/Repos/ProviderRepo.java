@@ -10,5 +10,8 @@ import java.util.List;
 public interface ProviderRepo extends JpaRepository<Provider, Integer> {
     Provider findProviderById(Integer id);
 
+    Provider findProviderByName(String name);
+
+
     List<Provider> findAllByProviderType(String type);
 }

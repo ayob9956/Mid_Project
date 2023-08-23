@@ -53,6 +53,16 @@ public class ClientService {
         return clientRepo.findClientById(id);
     }
 
+    public Provider getProviderByName(String name) {
+        Provider provider = providerRepo.findProviderByName(name);
+
+        if (provider == null) {
+            throw new ApiException("wrong Provider name");
+        }
+
+        return provider;
+    }
+
     public void addNewProject(Integer clientID, Project project) {
         Client client = clientRepo.findClientById(clientID);
 
@@ -88,4 +98,5 @@ public class ClientService {
         projectRepo.save(project);
 
     }
+
 }

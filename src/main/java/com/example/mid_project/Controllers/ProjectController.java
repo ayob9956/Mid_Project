@@ -43,7 +43,12 @@ public class ProjectController {
     }
 
     @GetMapping("/get/{id}")
-    public Project findProjectById(@PathVariable Integer id) {
-        return projectService.findProjectById(id);
+    public ResponseEntity findProjectById(@PathVariable Integer id) {
+        return ResponseEntity.status(200).body(projectService.findProjectById(id));
+    }
+
+    @GetMapping("/filter/{type}")
+    public ResponseEntity findProjectsByType(@PathVariable String type) {
+        return ResponseEntity.status(200).body(projectService.getProjectsByType(type));
     }
 }

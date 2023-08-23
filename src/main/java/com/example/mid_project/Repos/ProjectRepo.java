@@ -12,6 +12,7 @@ import java.util.List;
 public interface ProjectRepo extends JpaRepository<Project, Integer> {
     Project findProjectById(Integer id);
 
+    List<Project> findProjectByType(String type);
 
     @Query("select p from Project p ")
     List<Project> getAllProject();

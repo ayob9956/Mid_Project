@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ClientRepo extends JpaRepository<Client,Integer> {
-    List<Client> findAll();
+public interface ClientRepo extends JpaRepository<Client, Integer> {
+//    List<Client> findAll();
 
     Client findClientById(Integer id);
 }
