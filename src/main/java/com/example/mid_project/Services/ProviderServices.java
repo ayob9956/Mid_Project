@@ -1,8 +1,12 @@
 package com.example.mid_project.Services;
 
 import com.example.mid_project.APIs.ApiException;
+import com.example.mid_project.Models.Project;
 import com.example.mid_project.Models.Provider;
+import com.example.mid_project.Models.Request;
+import com.example.mid_project.Repos.ProjectRepo;
 import com.example.mid_project.Repos.ProviderRepo;
+import com.example.mid_project.Repos.RequestRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +17,8 @@ import java.util.List;
 public class ProviderServices {
 
     private final ProviderRepo providerRepo;
+    private final ProjectRepo projectRepo;
+    private final RequestRepo requestRepo;
 
     public List<Provider> getAllProviders() {
         return providerRepo.findAll();
@@ -50,5 +56,28 @@ public class ProviderServices {
 
     public Provider getProviderById(Integer id) {
         return providerRepo.findProviderById(id);
+    }
+
+
+    public void postRequest(Request request, Integer providerId,Integer prjectId) {
+        Provider provider = providerRepo.findProviderById(providerId);
+        Project  project = projectRepo.findProjectById(prjectId);
+        Request request1= requestRepo.checkRequest(providerId, prjectId);
+        if (project == null || provider == null) {
+            throw new ApiException("wrong provider ID or project ID");
+        }
+        if (request1!= null) {
+            throw new ApiException("request already exist");
+        }
+
+
+        if (provider.getBalance() < project.getDocumentation_price()) {
+            throw new ApiException("not enough money");
+        }
+        provider.setBalance(provider.getBalance() - project.getDocumentation_price());
+        request.setProviderName(provider.getName());
+        request.setProvider(provider);
+        request.setProject(project);
+        requestRepo.save(request);
     }
 }
