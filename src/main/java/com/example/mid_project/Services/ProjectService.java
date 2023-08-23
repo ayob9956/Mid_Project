@@ -1,7 +1,9 @@
 package com.example.mid_project.Services;
 
 import com.example.mid_project.APIs.ApiException;
+import com.example.mid_project.Models.Client;
 import com.example.mid_project.Models.Project;
+import com.example.mid_project.Repos.ClientRepo;
 import com.example.mid_project.Repos.ProjectRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,18 +16,20 @@ import java.util.List;
 public class ProjectService {
 
     private final ProjectRepo projectRepo;
+    private final ClientRepo clientRepo;
 
     public List<Project> getAllProjects() {
         return projectRepo.findAll();
     }
 
     public void addProject(Project project) {
-          projectRepo.save(project);
+        projectRepo.save(project);
+
     }
 
-    public void updateProject(Project project, Integer id){
-        Project project1=projectRepo.findProjectById(id);
-        if(project1==null){
+    public void updateProject(Project project, Integer id) {
+        Project project1 = projectRepo.findProjectById(id);
+        if (project1 == null) {
             throw new ApiException("Project not found");
         }
 
@@ -38,17 +42,17 @@ public class ProjectService {
         projectRepo.save(project1);
     }
 
-    public void deleteProject(Integer id){
+    public void deleteProject(Integer id) {
 
-        Project project=projectRepo.findProjectById(id);
-        if(project==null){
+        Project project = projectRepo.findProjectById(id);
+        if (project == null) {
             throw new ApiException("Project not found");
         }
 
         projectRepo.delete(project);
     }
 
-    public Project findProjectById(Integer id){
+    public Project findProjectById(Integer id) {
         return projectRepo.findProjectById(id);
     }
 

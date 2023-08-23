@@ -29,7 +29,7 @@ public class Client {
 
     @NotEmpty(message = "commercial Registration should not be null")
     @Column(name = "varchar(12) not null unique")
-    private String commercialRegistration;
+    private String commercialRecord;
 
     @NotEmpty(message = "email should not be null")
     @Email
@@ -38,7 +38,6 @@ public class Client {
 
 
     @NotEmpty(message = "phone should not be null")
-    @Pattern(regexp = "/^(\\+966|0)?(5[0-9]|6[0-9]|7[0-9]|8[0-9]|9[0-9])[0-9]{7}$/")
     @Column(columnDefinition = "varchar(15) not null unique")
     private String phoneNumber;
 

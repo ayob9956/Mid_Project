@@ -18,7 +18,6 @@ public class ProjectController {
     private final ProjectService projectService;
 
 
-
     @GetMapping("/get")
     public List<Project> getAllProjects() {
         return projectService.getAllProjects();
@@ -26,15 +25,13 @@ public class ProjectController {
 
     @PostMapping("/add")
     public ResponseEntity createProject(@RequestBody Project project) {
-
         projectService.addProject(project);
         return ResponseEntity.status(200).body("the project is added");
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity updateProject(@RequestBody Project project,@PathVariable Integer id) {
-
-        projectService.updateProject(project,id);
+    public ResponseEntity updateProject(@RequestBody Project project, @PathVariable Integer id) {
+        projectService.updateProject(project, id);
         return ResponseEntity.status(200).body("the project is updated");
     }
 

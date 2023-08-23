@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.util.List;
 import java.util.Set;
@@ -37,9 +38,9 @@ public class Project {
     @Column(columnDefinition = "varchar(12) not null check(type = 'technical' or type = 'operation' or type = 'construction' )")
     private String type;
 
-    @NotEmpty(message = "status must not be empty")
+    //    @NotEmpty(message = "status must not be empty")
     @Pattern(regexp = "(waiting|in progress|finish)")
-    @Column(columnDefinition = "varchar(25) not null default 'waiting'  check(status='finish' or status='waiting' or status='in progress')")
+    @Column(columnDefinition = "varchar(25) default 'waiting' check(status='finish' or status='waiting' or status='in progress')")
     private String status;
 
     @Column(columnDefinition = "varchar(25) not null")
