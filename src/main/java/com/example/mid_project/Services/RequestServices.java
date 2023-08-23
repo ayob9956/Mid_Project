@@ -47,4 +47,7 @@ public class RequestServices {
 
         requestRepo.delete(request);
     }
+    public Request findRequestById(Integer id) {
+        return requestRepo.findRequestById(id);
+    }
 }

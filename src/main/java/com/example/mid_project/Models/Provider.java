@@ -17,6 +17,7 @@ public class Provider {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     @NotEmpty(message = "name must not be empty")
     @Column(columnDefinition = "varchar(30) not null unique")
     private String name;

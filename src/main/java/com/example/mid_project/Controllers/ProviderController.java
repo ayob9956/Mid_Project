@@ -37,4 +37,9 @@ public class ProviderController {
         providerServices.deleteProvider(id);
         return ResponseEntity.status(201).body(new ApiResponse("provider deleted"));
     }
+
+    @GetMapping("/get/{id}")
+    public ResponseEntity findProviderbyid(@PathVariable Integer id) {
+        return ResponseEntity.status(200).body(providerServices.getProviderById(id));
+    }
 }
