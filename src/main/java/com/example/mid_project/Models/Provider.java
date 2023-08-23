@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -37,6 +39,7 @@ public class Provider {
     @Column(columnDefinition = "integer not null default 1500")
     private Integer balance;
 
+
     @NotEmpty(message = "commercial record is important")
     @Column(columnDefinition = "varchar(20) not null unique")
     private String commercialRecord;
@@ -45,4 +48,12 @@ public class Provider {
     @Pattern(regexp = "(technical|operation|construction)")
     @Column(columnDefinition = "varchar(12) not null check(provider_type = 'technical' or provider_type = 'operation' or provider_type = 'construction' )")
     private String providerType;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "provider")
+    private Set<Project> projects;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "provider")
+    private Set<Request> requests;
 }

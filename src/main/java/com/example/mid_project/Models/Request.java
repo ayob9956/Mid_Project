@@ -1,5 +1,6 @@
 package com.example.mid_project.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.AssertFalse;
 import jakarta.validation.constraints.NotEmpty;
@@ -40,4 +41,14 @@ public class Request {
     @Column(columnDefinition = "boolean default false")
     private Boolean isApproved;
 
+    @ManyToOne
+    @JoinColumn(name = "project_id", referencedColumnName = "id")
+    @JsonIgnore
+    private Project project;
+
+
+    @ManyToOne
+    @JoinColumn(name = "provider_id", referencedColumnName = "id")
+    @JsonIgnore
+    private Provider provider;
 }

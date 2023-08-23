@@ -9,8 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ProjectRepo extends JpaRepository<Project, Integer> {
-
     Project findProjectById(Integer id);
-
 
 }
