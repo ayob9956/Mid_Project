@@ -3,6 +3,7 @@ package com.example.mid_project.Controllers;
 
 import com.example.mid_project.APIs.ApiResponse;
 import com.example.mid_project.Models.Provider;
+import com.example.mid_project.Models.Request;
 import com.example.mid_project.Services.ProviderServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -41,5 +42,13 @@ public class ProviderController {
     @GetMapping("/get/{id}")
     public ResponseEntity findProviderbyid(@PathVariable Integer id) {
         return ResponseEntity.status(200).body(providerServices.getProviderById(id));
+    }
+
+    @PostMapping("/requestadd/{providerId}/{prjectId}")
+    public ResponseEntity postRequest(@RequestBody Request request,@PathVariable Integer providerId,
+                                      @PathVariable Integer prjectId) {
+        providerServices.postRequest(request,providerId,prjectId);
+        return ResponseEntity.status(201).body(new ApiResponse("request posted"));
+
     }
 }

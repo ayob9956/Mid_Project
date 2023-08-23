@@ -20,7 +20,7 @@ public class Request {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty(message = "provider name must not be empty")
+
     @Column(columnDefinition = "varchar(30) not null")
     private String providerName;
 

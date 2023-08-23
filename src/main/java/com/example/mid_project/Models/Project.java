@@ -24,6 +24,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     @NotEmpty(message = "name must Not be empty")
     @Column(columnDefinition = "varchar(25)", nullable = false)
     private String name;
