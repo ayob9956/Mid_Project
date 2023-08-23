@@ -26,8 +26,8 @@ public class Provider {
     @Column(columnDefinition = "varchar(20) not null unique")
     private String email;
 
-    @NotEmpty(message = "name must not be empty")
-    @Pattern(regexp = "^05\\d{9}$\n", message = "sorry! the phone number must be start with 05 and must be 10 digits")
+    @NotNull(message = "name must not be empty")
+    @Size(min = 10, max = 10, message = "phone must be 10 digits")
     @Column(columnDefinition = "varchar(10) not null unique")
     private String phone;
 
