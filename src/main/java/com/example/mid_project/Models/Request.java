@@ -1,6 +1,7 @@
 package com.example.mid_project.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.AssertFalse;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -33,5 +34,10 @@ public class Request {
     @NotEmpty(message = "duration must not be empty")
     @Column(columnDefinition = "varchar(15) not null")
     private String duration;
+
+
+    @AssertFalse
+    @Column(columnDefinition = "boolean default false")
+    private Boolean isApproved;
 
 }

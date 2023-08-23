@@ -33,6 +33,7 @@ public class RequestServices {
         request.setDuration(newRequest.getDuration());
         request.setProviderName(newRequest.getProviderName());
         request.setDetails(newRequest.getDetails());
+        request.setIsApproved(newRequest.getIsApproved());
 
         requestRepo.save(request);
     }
