@@ -59,14 +59,14 @@ public class ProviderServices {
     }
 
 
-    public void postRequest(Request request, Integer providerId,Integer prjectId) {
+    public void postRequest(Request request, Integer providerId, Integer prjectId) {
         Provider provider = providerRepo.findProviderById(providerId);
-        Project  project = projectRepo.findProjectById(prjectId);
-        Request request1= requestRepo.checkRequest(providerId, prjectId);
+        Project project = projectRepo.findProjectById(prjectId);
+        Request request1 = requestRepo.checkRequest(providerId, prjectId);
         if (project == null || provider == null) {
             throw new ApiException("wrong provider ID or project ID");
         }
-        if (request1!= null) {
+        if (request1 != null) {
             throw new ApiException("request already exist");
         }
 
@@ -76,8 +76,18 @@ public class ProviderServices {
         }
         provider.setBalance(provider.getBalance() - project.getDocumentation_price());
         request.setProviderName(provider.getName());
+        request.setIsApproved(false);
         request.setProvider(provider);
         request.setProject(project);
         requestRepo.save(request);
+    }
+
+    public List<Provider> searchProvidersByType(String type) {
+        List<Provider> providers = providerRepo.findAllByProviderType(type);
+
+        if (providers.isEmpty()) {
+            throw new ApiException("sorry! there's no providers with this type");
+        }
+        return providers;
     }
 }

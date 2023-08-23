@@ -45,10 +45,15 @@ public class ProviderController {
     }
 
     @PostMapping("/requestadd/{providerId}/{prjectId}")
-    public ResponseEntity postRequest(@RequestBody Request request,@PathVariable Integer providerId,
+    public ResponseEntity postRequest(@RequestBody Request request, @PathVariable Integer providerId,
                                       @PathVariable Integer prjectId) {
-        providerServices.postRequest(request,providerId,prjectId);
+        providerServices.postRequest(request, providerId, prjectId);
         return ResponseEntity.status(201).body(new ApiResponse("request posted"));
 
+    }
+
+    @GetMapping("/provider/type/{type}")
+    public ResponseEntity searchProviderByType(@PathVariable String type) {
+        return ResponseEntity.status(200).body(providerServices.searchProvidersByType(type));
     }
 }
