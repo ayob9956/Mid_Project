@@ -65,5 +65,6 @@ public class Project {
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
+    @JsonIgnore
     private Set<Request> requests;
 }

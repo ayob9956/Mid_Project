@@ -1,5 +1,6 @@
 package com.example.mid_project.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -55,5 +56,6 @@ public class Provider {
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "provider")
+    @JsonIgnore
     private Set<Request> requests;
 }

@@ -19,7 +19,7 @@ public class ProjectService {
     private final ClientRepo clientRepo;
 
     public List<Project> getAllProjects() {
-        return projectRepo.findAll();
+        return projectRepo.getAllProject();
     }
 
     public void addProject(Project project) {

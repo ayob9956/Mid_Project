@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 @RestController
@@ -59,6 +60,12 @@ public class ClientController {
     @GetMapping("/requests/{id}")
     public ResponseEntity getProjectRequests(@PathVariable Integer id) {
         return ResponseEntity.status(200).body(clientService.getProjectRequests(id));
+    }
+
+    @PutMapping("/accept/request/{id}")
+    public ResponseEntity acceptRequest(@PathVariable Integer id) {
+        clientService.acceptRequest(id);
+        return ResponseEntity.status(200).body(new ApiResponse("request accepted Successfully"));
     }
 
 }

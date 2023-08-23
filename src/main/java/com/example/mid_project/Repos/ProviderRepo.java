@@ -4,7 +4,11 @@ import com.example.mid_project.Models.Provider;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ProviderRepo extends JpaRepository<Provider, Integer> {
     Provider findProviderById(Integer id);
+
+    List<Provider> findAllByProviderType(String type);
 }
