@@ -37,4 +37,9 @@ public class RequestController {
         requestServices.deletePRequest(id);
         return ResponseEntity.status(201).body(new ApiResponse("Request deleted"));
     }
+
+    @GetMapping("/get/{id}")
+    public ResponseEntity findRequestbyid(@PathVariable Integer id) {
+        return ResponseEntity.status(200).body(requestServices.findRequestById(id));
+    }
 }

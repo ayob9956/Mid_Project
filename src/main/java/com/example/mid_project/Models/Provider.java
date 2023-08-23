@@ -17,8 +17,7 @@ public class Provider {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-<<<<<<< HEAD
-=======
+
     @NotEmpty(message = "name must not be empty")
     @Column(columnDefinition = "varchar(30) not null unique")
     private String name;
@@ -46,5 +45,4 @@ public class Provider {
     @Pattern(regexp = "(technical|operation|construction)")
     @Column(columnDefinition = "varchar(12) not null check(provider_type = 'technical' or provider_type = 'operation' or provider_type = 'construction' )")
     private String providerType;
->>>>>>> master
 }

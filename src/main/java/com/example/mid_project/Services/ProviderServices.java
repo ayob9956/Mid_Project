@@ -47,4 +47,8 @@ public class ProviderServices {
 
         providerRepo.delete(provider);
     }
+
+    public Provider getProviderById(Integer id) {
+        return providerRepo.findProviderById(id);
+    }
 }
