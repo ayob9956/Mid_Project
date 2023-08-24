@@ -93,10 +93,20 @@ public class ClientService {
         Provider provider = providerRepo.findProviderById(request.getProvider().getId());
 
         request.setIsApproved(true);
+        project.setStatus("in progress");
         project.setProvider(provider);
         requestRepo.save(request);
         projectRepo.save(project);
 
+    }
+
+    public Client getClientByName(String name) {
+        Client client = clientRepo.findClientByName(name);
+        if (client == null) {
+            throw new ApiException("wrong client name");
+        }
+
+        return client;
     }
 
 }

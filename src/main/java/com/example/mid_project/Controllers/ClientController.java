@@ -73,5 +73,10 @@ public class ClientController {
         return ResponseEntity.status(200).body(new ApiResponse("request accepted Successfully"));
     }
 
+    @GetMapping("/search/{name}")
+    public ResponseEntity searchClientById(@PathVariable String name) {
+        return ResponseEntity.status(200).body(clientService.getClientByName(name));
+    }
+
 
 }

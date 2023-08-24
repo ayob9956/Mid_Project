@@ -11,4 +11,6 @@ public interface ClientRepo extends JpaRepository<Client, Integer> {
 //    List<Client> findAll();
 
     Client findClientById(Integer id);
+
+    Client findClientByName(String name);
 }

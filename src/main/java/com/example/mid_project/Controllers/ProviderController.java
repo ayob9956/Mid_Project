@@ -52,7 +52,7 @@ public class ProviderController {
 
     }
 
-    @GetMapping("/provider/type/{type}")
+    @GetMapping("/type/{type}")
     public ResponseEntity searchProviderByType(@PathVariable String type) {
         return ResponseEntity.status(200).body(providerServices.searchProvidersByType(type));
     }
